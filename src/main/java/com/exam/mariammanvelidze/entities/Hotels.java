@@ -24,9 +24,6 @@ public class Hotels {
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Rooms> rooms = new ArrayList<>();
-
     public static Hotels mapFromHotelDto(HotelDto hotelDto){
         Hotels hotel = new Hotels();
         hotel.name = hotelDto.getName();
