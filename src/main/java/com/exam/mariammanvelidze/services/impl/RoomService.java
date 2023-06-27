@@ -8,6 +8,9 @@ import com.exam.mariammanvelidze.repositories.RoomRepository;
 import com.exam.mariammanvelidze.services.IRoomService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class RoomService implements IRoomService {
     private final RoomRepository roomRepository;
@@ -26,5 +29,27 @@ public class RoomService implements IRoomService {
         hotel.getRooms().add(room);
         hotelRepository.save(hotel);
         return roomDto;
+    }
+
+    @Override
+    public List<RoomDto> getFreeRooms() {
+        List<Rooms> freeRooms = roomRepository.getFreeRooms();
+        List<RoomDto> freeRoomDtos = new ArrayList<>();
+
+        for(Rooms room : freeRooms){
+            freeRoomDtos.add(RoomDto.mapFromRoom(room));
+        }
+        return freeRoomDtos;
+    }
+
+    @Override
+    public List<RoomDto> getBusyRooms() {
+        List<Rooms> busyRooms = roomRepository.getBusyRooms();
+        List<RoomDto> busyRoomDtos = new ArrayList<>();
+
+        for(Rooms room : busyRooms){
+            busyRoomDtos.add(RoomDto.mapFromRoom(room));
+        }
+        return busyRoomDtos;
     }
 }

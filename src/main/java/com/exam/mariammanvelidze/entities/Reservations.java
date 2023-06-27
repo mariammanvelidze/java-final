@@ -26,7 +26,7 @@ public class Reservations {
     private Date reservedUntil;
 
     @Column(name = "reserved_by", nullable = false)
-    private Long reservedBy; // User Id, Not Created as Entity
+    private Long reservedBy;
 
     @Column(name = "price", nullable = false)
     private double price;
