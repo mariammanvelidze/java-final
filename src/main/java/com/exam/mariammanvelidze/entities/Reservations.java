@@ -37,10 +37,10 @@ public class Reservations {
 
     public static Reservations mapFromReservationDto(ReservationsDto reservationDto){
         Reservations reservation = new Reservations();
-        reservation.setReservedFrom(reservationDto.getFrom());
-        reservation.setReservedUntil(reservationDto.getUntil());
-        reservation.setReservedBy(reservationDto.getReservedBy());
-        reservation.setPrice(reservationDto.getPrice());
+        reservation.reservedFrom = reservationDto.getFrom();
+        reservation.reservedUntil = reservationDto.getUntil();
+        reservation.reservedBy = reservationDto.getReservedBy();
+        reservation.price = reservationDto.getPrice();
 
         return reservation;
     }
