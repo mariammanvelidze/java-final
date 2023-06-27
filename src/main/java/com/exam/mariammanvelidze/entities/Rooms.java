@@ -34,7 +34,10 @@ public class Rooms {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="hotel_id")
     private Hotels hotel;
-    
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservations> reservations = new ArrayList<>();
+
     public static Rooms mapFromRoomDto(RoomDto roomDto){
         Rooms room = new Rooms();
         room.roomNumber = roomDto.getRoomNumber();
